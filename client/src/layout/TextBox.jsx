@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 export default function TextBox(props) {
     const [desc, setDesc] = useState('')
     const [heading, setHeading] = useState('')
+    const user = JSON.parse(localStorage.getItem('user'))
     const [text,setText]=useState('')
     const handlesubmit=async(e)=>{
       e.preventDefault();
@@ -12,6 +13,7 @@ export default function TextBox(props) {
           'Content-Type':"application/json"
         },
         body:JSON.stringify({
+          userid:user._id,
           heading:heading,
           desc:desc
         })
@@ -19,16 +21,19 @@ export default function TextBox(props) {
       const result=await res.json();
       if(result.success)
       {
+        setTimeout(() => {
+          setText("Your Note has Been Addes")
+        }, 3000);
         
-        setText("Your Note has Been Addes")
       }
     }
   return (
     <div className='container my-3' >
       <form onSubmit={handlesubmit}>
-      <div class="alert alert-success" role="alert">
+      {/* <div class="alert alert-success" role="alert">
           {text}
          </div>
+       */}
         <h1>{props.title}</h1>
         
         <div className="mb-3">

@@ -1,8 +1,9 @@
 import note from "../models/addnote.js";
 
 async function addnotecontroller(req,res){
-    const {heading,desc}=req.body;
+    const {heading,desc,userid}=req.body;
     const newNote= note.create({
+        userid:userid,
         heading:heading,
         desc:desc
     })

@@ -9,6 +9,7 @@ import About from './layout/About.jsx';
 import Login from './layout/Login.jsx';
 import MyNotes from './layout/MyNotes.jsx';
 const App = () => {
+  const user = JSON.parse(localStorage.getItem('user'))
   return (
     <>
      
@@ -20,7 +21,8 @@ const App = () => {
           <Route path='/about' element={<About/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/mynotes' element={<MyNotes/>}/>
-          <Route path='/' element={<TextBox title="Enter Text To Analyze"/>}/>
+          
+          {user?<Route path='/' element={<TextBox title="Enter Text To Analyze"/>}/>:<Route  element={<Login/>}/>}
         </Routes>
         
       </BrowserRouter>

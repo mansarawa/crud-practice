@@ -19,7 +19,7 @@ export default function Login() {
         })
         const result = await res.json();
         if (result.success) {
-            localStorage.setItem("user",JSON.stringify(result.user))
+            localStorage.setItem("user",JSON.stringify(result))
             router('/')
             console.log("login success")
         }

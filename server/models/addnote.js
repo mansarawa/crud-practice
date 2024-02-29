@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 const noteSchema=new Schema({
+    userid:String,
     heading:String,
     desc:String
 })

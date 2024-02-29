@@ -1,79 +1,82 @@
-import React from 'react'
+import React, { useSyncExternalStore } from 'react'
 import Register from './Register.jsx'
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Navbar(props) {
-  const user=JSON.parse(localStorage.getItem('user'))
+  const router=useNavigate();
+  const user = localStorage.getItem('user')
+ 
+  const hadlelogout = () => {
   
-  
-  const hadlelogout=()=>{
     localStorage.clear();
+    router('/login')
   }
   return (
     <div>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-  <div className="container-fluid">
-    <a className="navbar-brand" href="/">
-      {props.title}
-    </a>
-    <button
-      className="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span className="navbar-toggler-icon" />
-    </button>
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="/">
-            Home
-          </a>
-        </li>
-       {user? <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="/mynotes">
-            My Notes
-          </a>
-        </li>:""}
-        {!user?<li className="nav-item">
-          <a className="nav-link active" aria-current="page" href='/register'>
-            Register
-          </a>
-        </li>:''}
-        {!user?<li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="/login">
-            Login
-          </a>
-        </li>:<li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="/login" onClick={hadlelogout}> 
-            Logout
-          </a>
-        </li>}
-        <li className="nav-item">
-          <a className="nav-link" href="/about">
-            About
-          </a>
-        </li>
-       
-      
-      </ul>
-      <form className="d-flex" role="search">
-        <input
-          className="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button className="btn btn-outline-success" type="submit">
-          Search
-        </button>
-      </form>
-    </div>
-  </div>
-</nav>
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <div className="container-fluid">
+          <Link className="navbar-brand" to="/">
+            {props.title}
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to={"/"}>
+                  Home
+                </Link>
+              </li>
+              {user ? <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to={"/mynotes"}>
+                  My Notes
+                </Link>
+              </li> : ""}
+              {!user ? <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to={'/register'}>
+                  Register
+                </Link>
+              </li> : ''}
+              {!user ? <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to={"/login"}>
+                  Login
+                </Link>
+              </li> : <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to="/login" onClick={hadlelogout}>
+                  Logout
+                </Link>
+              </li>}
+              <li className="nav-item">
+                <Link className="nav-link" to="/about">
+                  About
+                </Link>
+              </li>
+
+
+            </ul>
+            <form className="d-flex" role="search">
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button className="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
     </div>
   )
 }
