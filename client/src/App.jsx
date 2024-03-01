@@ -22,7 +22,7 @@ const App = () => {
           <Route path='/about' element={<About/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/mynotes' element={<MyNotes/>}/>
-          <Route path='/update/:id' element={<Update/>}/>
+          <Route path='/update/:id/:heading/:desc' element={<Update/>}/>
           {user?<Route path='/' element={<TextBox title="Enter Text To Analyze"/>}/>:<Route  element={<Login/>}/>}
         </Routes>
         

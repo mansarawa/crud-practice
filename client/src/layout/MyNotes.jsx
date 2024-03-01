@@ -24,7 +24,7 @@ export default function MyNotes() {
       const myNotes = result.notes;
       if (result.success) {
         setData(myNotes);
-        localStorage.setItem("myNotes", JSON.stringify(result.notes))
+        localStorage.setItem("notes", JSON.stringify(result.notes))
       } else {
         console.log('No notes found');
       }
@@ -53,13 +53,13 @@ export default function MyNotes() {
     }
   }
 
-  const handleUpdate = (_id) => {
-    router(`/update/${_id}`); // Navigate to Update component with item ID
+  const handleUpdate = (_id,heading,desc) => {
+    router(`/update/${_id}/${heading}/${desc}`); // Navigate to Update component with item ID
   }
 
   return (
     <div className='container my-3'>
-      <table className="table table-success table-striped">
+      <table className="table table-success table-striped" style={{textAlign:'center'}}>
         <thead>
           <tr>
             <th>Sr.No</th>
@@ -68,14 +68,14 @@ export default function MyNotes() {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody >
           {data && data.map((item, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
               <td>{item.heading}</td>
               <td>{item.desc}</td>
-              <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <button type="button" onClick={() => handleUpdate(item._id)} className="btn btn-success">Update</button>
+              <td style={{ display: 'flex' ,justifyContent:'space-evenly'}}>
+                <button type="button" onClick={() => handleUpdate(item._id,item.heading,item.desc)} className="btn btn-success">Update</button>
                 <button type="button" onClick={() => handledel(item._id)} className="btn btn-danger">Delete</button>
               </td>
             </tr>
