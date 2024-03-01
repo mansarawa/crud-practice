@@ -1,19 +1,23 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function TextBox(props) {
     const [desc, setDesc] = useState('')
     const [heading, setHeading] = useState('')
+    const router=useNavigate();
     const user = JSON.parse(localStorage.getItem('user'))
+    const userid=user._id;
+    console.log(userid)
     const [text,setText]=useState('')
     const handlesubmit=async(e)=>{
-      e.preventDefault();
+
       const res=await fetch('http://localhost:4000/addnote',{
         method:'post',
         headers:{
           'Content-Type':"application/json"
         },
         body:JSON.stringify({
-          userid:user._id,
+          userid:userid,
           heading:heading,
           desc:desc
         })
@@ -21,9 +25,8 @@ export default function TextBox(props) {
       const result=await res.json();
       if(result.success)
       {
-        setTimeout(() => {
-          setText("Your Note has Been Addes")
-        }, 3000);
+        e.preventDefault();
+        router('/mynotes')
         
       }
     }
@@ -59,12 +62,12 @@ export default function TextBox(props) {
       rows={8}
       value={desc}
       onChange={(e)=>setDesc(e.target.value)}
-      defaultValue={""}
+      
     />
   </div>
   
   <button className="btn btn-primary" type='submit'>Add Text</button>
   </form>
-    </div>
+      </div>
   )
 }
