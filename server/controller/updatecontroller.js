@@ -6,7 +6,7 @@ async function updateController(req, res) {
         const updateNote = await note.findByIdAndUpdate(_id, { heading, desc }, { new: true });
         if (updateNote) {
             console.log("updated");
-            return res.status(200).json({ message: "Note updated successfully", note: updateNote });
+            return res.status(200).json({ message: "Note updated successfully",success:true, note: updateNote });
         } else {
             return res.status(404).json({ message: "Note not found" });
         }

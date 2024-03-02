@@ -31,7 +31,7 @@ export default function () {
             })
             const result = await res.json();
             if (result.success) {
-                e.preventDefault();
+                // e.preventDefault();
                 router('/mynotes')
             }
             else {
