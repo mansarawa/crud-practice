@@ -9,6 +9,7 @@ import About from './layout/About.jsx';
 import Login from './layout/Login.jsx';
 import MyNotes from './layout/MyNotes.jsx';
 import Update from './layout/Update.jsx';
+import Profile from './layout/Profile.jsx';
 
 const App = () => {
   const user = JSON.parse(localStorage.getItem('user'))
@@ -21,6 +22,7 @@ const App = () => {
           <Route path='/register' element={<Register/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path='/login' element={<Login/>}/>
+          <Route path='/profile' element={<Profile/>}/>
           <Route path='/mynotes' element={<MyNotes/>}/>
           <Route path='/update/:id/:heading/:desc' element={<Update/>}/>
           {user?<Route path='/' element={<TextBox title="Enter Text To Analyze"/>}/>:<Route  element={<Login/>}/>}

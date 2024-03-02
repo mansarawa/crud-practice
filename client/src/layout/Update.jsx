@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
 
 export default function () {
 
@@ -32,6 +32,7 @@ export default function () {
             const result = await res.json();
             if (result.success) {
                 // e.preventDefault();
+                toast.success('Updated successfully')
                 router('/mynotes')
             }
             else {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import { toast } from 'react-toastify'
 export default function TextBox(props) {
     const [desc, setDesc] = useState('')
     const [heading, setHeading] = useState('')
@@ -25,11 +25,14 @@ export default function TextBox(props) {
       const result=await res.json();
       if(result.success)
       {
+        
+        toast.success('Added successfully')
         e.preventDefault();
         router('/mynotes')
         
       }
     }
+
   return (
     <div className='container my-3' >
       <form onSubmit={handlesubmit}>
@@ -66,7 +69,7 @@ export default function TextBox(props) {
     />
   </div>
   
-  <button className="btn btn-primary" type='submit'>Add Text</button>
+  <button className="btn btn-primary" onClick={()=>{toast.success('Added successfully')}}  type='submit'>Add Text</button>
   </form>
       </div>
   )

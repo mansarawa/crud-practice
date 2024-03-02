@@ -7,10 +7,14 @@ import login from "./router/login.js";
 import mynote from "./router/mynote.js";
 import deletenote from "./router/deletenote.js";
 import updatenote from "./router/update.js";
+import imagerouter from "./router/imageroute.js";
+import getimage from "./router/getimage.js";
 const app=express();
 app.use(express.json())
 app.use(cors());
 app.use('/',router)
+app.use('/',imagerouter)
+app.use('/',getimage)
 app.use('/',signup)
 app.use('/',mynote)
 app.use('/',updatenote)

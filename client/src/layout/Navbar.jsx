@@ -64,7 +64,7 @@ export default function Navbar(props) {
 
             </ul>
             <form className="d-flex" role="search">
-              <Link  className="nav-link active" aria-current="page" to={"/login"}>{user?`Hello ${user.name}`:'Hello'} </Link>
+              <Link  className="nav-link active" aria-current="page" to={"/profile"}>{user?`Hello ${user.name}`:'Hello'} </Link>
             </form>
           </div>
         </div>

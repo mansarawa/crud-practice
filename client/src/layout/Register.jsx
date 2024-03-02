@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 
 export default function Register() {
@@ -24,6 +25,7 @@ export default function Register() {
   const result=await res.json()
   if(result.success)
   {
+    toast.success('Register Successfully')
     router('/login')
   }
   console.log(setEmail)
