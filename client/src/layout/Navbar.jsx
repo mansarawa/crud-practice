@@ -4,8 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function Navbar(props) {
   const router=useNavigate();
-  const user = localStorage.getItem('user')
- 
+  const user = JSON.parse(localStorage.getItem('user'))
+//  console.log(user.name)
   const hadlelogout = () => {
   
     localStorage.clear();
@@ -64,15 +64,7 @@ export default function Navbar(props) {
 
             </ul>
             <form className="d-flex" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
+              <Link  className="nav-link active" aria-current="page" to={"/login"}>{user?`Hello ${user.name}`:'Hello'} </Link>
             </form>
           </div>
         </div>

@@ -9,13 +9,12 @@ import About from './layout/About.jsx';
 import Login from './layout/Login.jsx';
 import MyNotes from './layout/MyNotes.jsx';
 import Update from './layout/Update.jsx';
-import NoteState from './context/NoteState.jsx';
+
 const App = () => {
   const user = JSON.parse(localStorage.getItem('user'))
   return (
     <>
-     <NoteState>
-      
+ 
       <BrowserRouter>
       <Navbar title="BackChodi"/>
         <Routes>
@@ -28,8 +27,7 @@ const App = () => {
         </Routes>
         
       </BrowserRouter>
-      </NoteState>
-     
+      
     </>
   )
 }
