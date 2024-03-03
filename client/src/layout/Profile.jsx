@@ -14,12 +14,13 @@ export default  function Profile() {
     const cloudSend=await fetch('https://api.cloudinary.com/v1_1/do8hfvnjb/image/upload',{
       method:'post',
       body:data
-      
+
     })
     const resu=await cloudSend.json();
+    console.log(resu)
     const imageUrl=resu.url;      
       console.log(imageUrl)
-   
+
     const req=await fetch('http://localhost:4000/profile',{
       method:'post',
       headers:{
@@ -30,14 +31,12 @@ export default  function Profile() {
         userid:userid
       })
     })
-    const result=req.json();
+    const result=await req.json();
     if(result.success)
     {
+      console.log('uploaded')
       toast.success("image uploaded")
     }
- 
- 
-    
   }
   const getUserProfilePic = async() =>{
 
@@ -52,8 +51,8 @@ export default  function Profile() {
     })
     console.log('hello')
     const output=await profile.json();
-    
-    console.log(output.data.url)
+
+   console.log(output.data)
     if(output.success)
     {
       setPhoto(output.data.url)

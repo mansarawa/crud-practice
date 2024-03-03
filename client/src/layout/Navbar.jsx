@@ -1,7 +1,7 @@
 import React, { useSyncExternalStore } from 'react'
 import Register from './Register.jsx'
 import { Link, useNavigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
 export default function Navbar(props) {
   const router=useNavigate();
   const user = JSON.parse(localStorage.getItem('user'))
@@ -9,11 +9,12 @@ export default function Navbar(props) {
   const hadlelogout = () => {
   
     localStorage.clear();
+    toast.error('Logout')
     router('/login')
   }
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary" >
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             {props.title}

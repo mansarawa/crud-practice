@@ -4,7 +4,10 @@ const noteSchema=new Schema({
     userid:String,
     heading:String,
     desc:String,
-    
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
     
 })
 

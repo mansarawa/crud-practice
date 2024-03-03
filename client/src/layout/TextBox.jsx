@@ -25,10 +25,14 @@ export default function TextBox(props) {
       const result=await res.json();
       if(result.success)
       {
-        
+        console.log(result.success)
         toast.success('Added successfully')
-        e.preventDefault();
-        router('/mynotes')
+        
+          e.preventDefault();
+          router('/mynotes')
+       
+        
+       
         
       }
     }

@@ -1,16 +1,14 @@
 import Note from "../models/addnote.js";
 
 async function myNoteController(req, res) {
-    
     const { userid } = req.body;
     try {
-        const myNotes = await Note.find({ userid: userid });
-        console.log(myNotes)
-        return res.json({ message: "Your notes",  notes:myNotes,success:true });
-        
+        const myNotes = await Note.find({ userid: userid }).sort({ createdAt: -1 });
+        console.log(myNotes);
+        return res.json({ message: "Your notes", notes: myNotes, success: true });
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ message: "Internal Server Error" ,success:false});
+        return res.status(500).json({ message: "Internal Server Error", success: false });
     }
 }
 
