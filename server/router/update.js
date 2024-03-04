@@ -1,5 +1,5 @@
 import express from 'express'
-import updataController from '../controller/updateController.js';
+import updataController from '../controller/updatecontroller.js';
 
 const updatenote=express.Router();
 
