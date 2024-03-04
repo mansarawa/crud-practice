@@ -1,20 +1,23 @@
-import React, { useSyncExternalStore } from 'react'
+import React, { useState, useSyncExternalStore } from 'react'
 import Register from './Register.jsx'
+
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 export default function Navbar(props) {
-  const router=useNavigate();
-  const user = JSON.parse(localStorage.getItem('user'))
-//  console.log(user.name)
-  const hadlelogout = () => {
+  const router = useNavigate();
   
+  const user = JSON.parse(localStorage.getItem('user'))
+  //  console.log(user.name)
+  const hadlelogout = () => {
+
     localStorage.clear();
     toast.error('Logout')
     router('/login')
   }
+  
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary" >
+      <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             {props.title}
@@ -60,12 +63,28 @@ export default function Navbar(props) {
                 <Link className="nav-link" to="/about">
                   About
                 </Link>
+
               </li>
 
 
             </ul>
             <form className="d-flex" role="search">
-              <Link  className="nav-link active" aria-current="page" to={"/profile"}>{user?`Hello ${user.name}`:'Hello'} </Link>
+              <Link className="nav-link active" style={{color:props.mode=='dark'?'white':"#212529",marginRight:'50px'}}  aria-current="page" to={"/profile"}>{user ? `Hello ${user.name}` : 'Hello'} </Link>
+              <div className="nav-link active">
+                <div className="form-check form-switch">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    id="flexSwitchCheckChecked"
+                    onClick={props.handlemode}
+                    defaultChecked=""
+                  />
+                  <label className="form-check-label" style={{color:props.mode=='dark'?'white':"#212529",width:"100%"}} htmlFor="flexSwitchCheckChecked">
+                    Enable Dark Mode
+                  </label>
+                </div>
+              </div>
             </form>
           </div>
         </div>

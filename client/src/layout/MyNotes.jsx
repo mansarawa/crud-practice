@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom'; // Corrected import
 
-export default function MyNotes() {
+export default function MyNotes(props) {
   const user = JSON.parse(localStorage.getItem('user'));
   const userid = user._id;
  
@@ -58,8 +58,8 @@ export default function MyNotes() {
   }
 
   return (
-    <div className='container my-3'>
-      <table className="table table-success table-striped" style={{textAlign:'center'}}>
+    <div   style={{backgroundColor:props.mode=='light'?'white':'#212529',marginTop:'3%',color:props.mode=='dark'?'white':"#212529"}}>
+      <table className="table table-success table-striped" style={{textAlign:'center',width:'90%',marginLeft:'5%'}}>
         <thead>
           <tr>
             <th>Sr.No</th>

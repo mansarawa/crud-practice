@@ -1,5 +1,6 @@
 .container{
-   
+   text-align: center;
+   height: 90vh;
 }
 .edit{
     padding: 3px;
@@ -9,7 +10,9 @@
 .userdetails{
     display: flex;
     padding: 10vh;
+    width: 80%;
     flex-direction: column;
+    margin-left: 10%;
     border: 3px dashed black;
     border-radius: 15px;
     margin-top: 2%;

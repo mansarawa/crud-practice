@@ -3,7 +3,7 @@ import proFile from './profile.module.css'
 import { toast } from 'react-toastify';
 import ClickAwayListener from 'react-click-away-listener';
 import { useNavigate } from 'react-router-dom';
-export default function Profile() {
+export default function Profile(props) {
   const [photomodal, setPhotomodal] = useState(false)
   const [photo, setPhoto] = useState('')
   const user = JSON.parse(localStorage.getItem('user'))
@@ -72,8 +72,8 @@ export default function Profile() {
     setPhotomodal(false)
   }
   return (
-    <div className={`container my-3 ${proFile.container}`} style={{textAlign:'center'}}>
-      <div className="image" style={{ overflow: "hidden" }}>
+    <div className={proFile.container} style={{backgroundColor:props.mode=='light'?'white':'#212529',color:props.mode=='dark'?'white':"#212529"}}>
+      <div className="py-3" style={{ overflow: "hidden" }}>
         <img src={photo} alt="" style={{ height: "150px", borderRadius: '70%', width: "150px", objectFit:"fill" }} />
         <button className={`btn btn-primary  ${proFile.edit}`} onClick={handleedit}>Edit Profile Photo</button>
       </div>
@@ -84,7 +84,7 @@ export default function Profile() {
             <button className ="btn btn-primary" onClick={handleupload}>Upload</button>
           </div>  
         </ClickAwayListener>)}
-        <div className={proFile.userdetails}>
+        <div className={proFile.userdetails} style={{borderColor:props.mode=='dark'?'white':"#212529"}}>
           <div className={proFile.item}>
             <h3 style={{width:'50%'}}>Name </h3>
             <h4 style={{width:'50%'}}>{user.name}</h4>

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 export default function TextBox(props) {
+  console.log(props)
     const [desc, setDesc] = useState('')
     const [heading, setHeading] = useState('')
     const router=useNavigate();
@@ -38,17 +39,17 @@ export default function TextBox(props) {
     }
 
   return (
-    <div className='container my-3' >
-      <form onSubmit={handlesubmit}>
+    <div  style={{backgroundColor:props.mode=='light'?'white':'#212529',color:props.mode=='light'?'white':"#212529",width:"100%",height:'90vh'}}>
+      <form onSubmit={handlesubmit}  className='container '>
       {/* <div class="alert alert-success" role="alert">
           {text}
          </div>
        */}
-        <h1>{props.title}</h1>
+        <h1 style={{color:props.mode=='dark'?'white':"#212529",width:"100%"}}>{props.title}</h1>
         
         <div className="mb-3">
     <label htmlFor="exampleFormControlInput1" className="form-label">
-      Title/Catogries
+      Title/Categories
     </label>
     <input
       type="text"
@@ -56,7 +57,7 @@ export default function TextBox(props) {
       value={heading}
       onChange={(e)=>setHeading(e.target.value)}
       id="exampleFormControlInput1"
-      placeholder="name@example.com"
+      placeholder="college,offfice,market"
     />
   </div>
   <div className="mb-3">
