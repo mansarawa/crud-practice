@@ -58,7 +58,7 @@ export default function MyNotes(props) {
   }
 
   return (
-    <div   style={{backgroundColor:props.mode=='light'?'white':'#212529',marginTop:'3%',color:props.mode=='dark'?'white':"#212529"}}>
+    <div  className='container my-3' >
       <table className="table table-success table-striped" style={{textAlign:'center',width:'90%',marginLeft:'5%'}}>
         <thead>
           <tr>
