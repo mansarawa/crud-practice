@@ -11,7 +11,9 @@ import imagerouter from "./router/imageroute.js";
 import getimage from "./router/getimage.js";
 const app=express();
 app.use(express.json())
-app.use(cors());
+app.use(cors({
+    origin:"*"
+}));
 app.use('/',router)
 app.use('/',imagerouter)
 app.use('/',getimage)
