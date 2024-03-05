@@ -38,8 +38,10 @@ export default function Profile(props) {
     const result = await req.json();
     if (result.success) {
       console.log('uploaded')
+      
       navigate('/profile')
       toast.success("image uploaded")
+      e.preventDefault();
     }
   }
   const getUserProfilePic = async () => {

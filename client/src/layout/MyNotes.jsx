@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom'; // Corrected import
 import myNote from './myNote.module.css'
 import { FaRegEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
+import { AiOutlineDelete } from "react-icons/ai";
 export default function MyNotes(props) {
   const user = JSON.parse(localStorage.getItem('user'));
   const userid = user._id;
@@ -60,20 +60,20 @@ export default function MyNotes(props) {
   }
 
   return (
-    <div  className={myNote.parent} >
+    <div  className={props.mode ==='light'?myNote.parent:myNote.modeparent} >
       
           {data && data.map((item, index) => (
             <div className={props.mode ==='light'?myNote.child:myNote.modechile}>
               <div className={myNote.heading}>
                 <h3>{item.heading}</h3>
                 </div>
-              <div className={myNote.desc}>
+              <div className={item.desc.length>=300?myNote.desc:myNote.disc}>
                 <td>{item.desc}</td>
               </div>
               <div className="button" style={{ display: 'flex' ,justifyContent:'space-evenly'}}>
               
-                <FaRegEdit onClick={() => handleUpdate(item._id,item.heading,item.desc)} />
-                <MdDelete onClick={() => handledel(item._id)} style={{color:'red',cursor:'pointer'}} />
+                <FaRegEdit onClick={() => handleUpdate(item._id,item.heading,item.desc)} style={{color:'green',cursor:'pointer'}} />
+                <AiOutlineDelete onClick={() => handledel(item._id)} style={{color:'red',cursor:'pointer'}} />
                 </div>
               </div>
           ))}

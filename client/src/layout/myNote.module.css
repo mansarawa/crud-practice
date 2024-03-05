@@ -27,17 +27,23 @@
     overflow-y: scroll;
     max-height: 140px;
 }
+.disc{
+  min-height: 140px;
+    
+    max-height: 140px;
+}
 /* For WebKit browsers (Chrome, Safari) */
 ::-webkit-scrollbar {
-    width: 10px; /* Width of the scrollbar */
+    width: 5px; /* Width of the scrollbar */
   }
   
   ::-webkit-scrollbar-track {
+    border-radius: 5px;
     background: #f1f1f1; /* Color of the track */
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #888; /* Color of the scrollbar handle */
+    background: lightblue; /* Color of the scrollbar handle */
     border-radius: 5px; /* Radius of the scrollbar handle */
   }
   
@@ -50,12 +56,18 @@
     color: white;
     padding: 1%;
     padding-bottom: 0%;
+    box-shadow: 1px 1px 11px lightblue;
     width: 30%;
     max-height: 220px;
     min-height: 220px;
     border-radius: 20px;
     margin-top: 3%;
     margin-left: 3%
+  }
+  .modeparent{
+    background-color: #212529;
+    display: flex;
+    flex-wrap: wrap;
   }
   @media screen and  (max-width: 600px) and (min-width: 400px)  {
     .parent{

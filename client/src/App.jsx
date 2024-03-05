@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from './layout/Navbar.jsx'
 import TextBox from './layout/TextBox.jsx';
 import Register from './layout/Register.jsx';
@@ -38,7 +38,8 @@ const App = () => {
           <Route path='/profile' element={<Profile mode={mode}/>}/>
           <Route path='/mynotes' element={<MyNotes mode={mode}/>}/>
           <Route path='/update/:id/:heading/:desc' element={<Update mode={mode}/>}/>
-          {user?<Route path='/' element={<TextBox title="Enter Text To Add" mode={mode}/>}/>:<Route  element={<Login mode={mode}/>}/>}
+          {user?<Route path='/' element={<TextBox title="Enter Text To Add" mode={mode}/>}/>
+          :<Route   element={<Login mode={mode}/>}/>}
         </Routes>
         
       </BrowserRouter>

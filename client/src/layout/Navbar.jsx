@@ -69,7 +69,7 @@ export default function Navbar(props) {
 
             </ul>
             <form className="d-flex" role="search">
-              <Link className="nav-link active" style={{color:props.mode=='dark'?'white':"#212529",marginRight:'50px'}}  aria-current="page" to={"/profile"}>{user ? `Hello ${user.name}` : 'Hello'} </Link>
+              <Link className="nav-link active" style={{color:props.mode=='dark'?'white':"#212529",marginRight:'50px'}}  aria-current="page" to={"/profile"}>{user ? `Hello ${user.name}` : 'Hello Guest'} </Link>
               <div className="nav-link active">
                 <div className="form-check form-switch">
                   <input

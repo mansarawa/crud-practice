@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-export default function Login() {
+export default function Login(props) {
     
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
@@ -29,7 +29,7 @@ export default function Login() {
         }
     }
     return (
-        <div className='container my-3'>
+        <div  style={{minHeight:'90vh',padding:'3%',backgroundColor:props.mode=='light'?'white':"#212529",color:props.mode=='light'?'#212529':"white"}}>
             <form onSubmit={handlesubmit}>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">

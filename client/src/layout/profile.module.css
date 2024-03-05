@@ -21,3 +21,10 @@
 {
     display: flex;
 }
+@media  screen and (max-width:600px) and (min-width:400px) {
+    .userdetails{
+        padding: 1%;
+        width: 90%;
+        margin-left: 5%;
+    }
+}

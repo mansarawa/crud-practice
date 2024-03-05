@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 
-export default function Register() {
+export default function Register(props) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password,setPassword]=useState('')
@@ -31,7 +31,7 @@ export default function Register() {
   console.log(setEmail)
  }
   return (
-    <div className='container my-3'>
+    <div style={{minHeight:'90vh',padding:'3%',backgroundColor:props.mode=='light'?'white':"#212529",color:props.mode=='light'?'#212529':"white"}}>
       <form onSubmit={handlesubmit}> 
       <div className="mb-3">
     <label htmlFor="exampleInputEmail1" className="form-label">

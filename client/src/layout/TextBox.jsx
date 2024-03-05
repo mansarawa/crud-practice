@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 export default function TextBox(props) {
@@ -30,11 +30,7 @@ export default function TextBox(props) {
         toast.success('Added successfully')
         
           e.preventDefault();
-          router('/mynotes')
-       
-        
-       
-        
+          router('/mynotes')               
       }
     }
 
@@ -62,7 +58,7 @@ export default function TextBox(props) {
     />
   </div>
   <div className="mb-3">
-    <label htmlFor="exampleFormControlTextarea1" className="form-label">
+    <label htmlFor="exampleFormControlTextarea1" className="form-label" style={{color:props.mode=='dark'?'white':"#212529",width:"100%"}}>
       Description
     </label>
     <textarea
