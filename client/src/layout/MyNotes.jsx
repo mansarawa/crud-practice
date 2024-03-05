@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom'; // Corrected import
-
+import myNote from './myNote.module.css'
+import { FaRegEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 export default function MyNotes(props) {
   const user = JSON.parse(localStorage.getItem('user'));
   const userid = user._id;
@@ -10,7 +12,7 @@ export default function MyNotes(props) {
 
   const showNotes = async () => {
     try {
-      const res = await fetch('http://localhost:4000/mynotes', {
+      const res = await fetch('https://crud-practice-4.onrender.com/mynotes', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json'
@@ -38,7 +40,7 @@ export default function MyNotes(props) {
   }, []);
 
   const handledel = async (_id) => {
-    const res = await fetch("http://localhost:4000/delete", {
+    const res = await fetch("https://crud-practice-4.onrender.com/delete", {
       method: "delete",
       headers: {
         'Content-Type': "application/json"
@@ -58,30 +60,24 @@ export default function MyNotes(props) {
   }
 
   return (
-    <div  className='container my-3' >
-      <table className="table table-success table-striped" style={{textAlign:'center',width:'90%',marginLeft:'5%'}}>
-        <thead>
-          <tr>
-            <th>Sr.No</th>
-            <th>Title</th>
-            <th>Desc</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody >
+    <div  className={myNote.parent} >
+      
           {data && data.map((item, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{item.heading}</td>
-              <td>{item.desc}</td>
-              <td style={{ display: 'flex' ,justifyContent:'space-evenly'}}>
-                <button type="button" onClick={() => handleUpdate(item._id,item.heading,item.desc)} className="btn btn-success">Update</button>
-                <button type="button" onClick={() => handledel(item._id)} className="btn btn-danger">Delete</button>
-              </td>
-            </tr>
+            <div className={props.mode ==='light'?myNote.child:myNote.modechile}>
+              <div className={myNote.heading}>
+                <h3>{item.heading}</h3>
+                </div>
+              <div className={myNote.desc}>
+                <td>{item.desc}</td>
+              </div>
+              <div className="button" style={{ display: 'flex' ,justifyContent:'space-evenly'}}>
+              
+                <FaRegEdit onClick={() => handleUpdate(item._id,item.heading,item.desc)} />
+                <MdDelete onClick={() => handledel(item._id)} style={{color:'red',cursor:'pointer'}} />
+                </div>
+              </div>
           ))}
-        </tbody>
-      </table>
+        
     </div>
   );
 }

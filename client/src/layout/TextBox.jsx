@@ -12,7 +12,7 @@ export default function TextBox(props) {
     const [text,setText]=useState('')
     const handlesubmit=async(e)=>{
 
-      const res=await fetch('http://localhost:4000/addnote',{
+      const res=await fetch('https://crud-practice-4.onrender.com/addnote',{
         method:'post',
         headers:{
           'Content-Type':"application/json"
@@ -55,6 +55,7 @@ export default function TextBox(props) {
       type="text"
       className="form-control"
       value={heading}
+      required
       onChange={(e)=>setHeading(e.target.value)}
       id="exampleFormControlInput1"
       placeholder="college,offfice,market"

@@ -25,7 +25,7 @@ export default function Profile(props) {
     const imageUrl = resu.url;
     console.log(imageUrl)
 
-    const req = await fetch('http://localhost:4000/profile', {
+    const req = await fetch('https://crud-practice-4.onrender.com/profile', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ export default function Profile(props) {
   }
   const getUserProfilePic = async () => {
 
-    const profile = await fetch('http://localhost:4000/getprofile', {
+    const profile = await fetch('https://crud-practice-4.onrender.com/getprofile', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'

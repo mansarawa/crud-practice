@@ -10,7 +10,7 @@ export default function Register() {
   const router=useNavigate();
  const handlesubmit=async(e)=>{
   e.preventDefault();
-  const res=await fetch('http://localhost:4000/signup',{
+  const res=await fetch('https://crud-practice-4.onrender.com/signup',{
     method:'post',
     headers:{
       'Content-Type':'application/json'

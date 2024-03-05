@@ -9,7 +9,7 @@ export default function Login() {
     const router = useNavigate()
     const handlesubmit = async (e) => {
         e.preventDefault();
-        const res = await fetch('http://localhost:4000/login', {
+        const res = await fetch('https://crud-practice-4.onrender.com/login', {
             method: "post",
             headers: {
                 'Content-Type': 'application/json'

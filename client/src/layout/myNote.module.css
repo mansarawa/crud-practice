@@ -1,0 +1,68 @@
+.parent
+{
+   background-color: #f8f9fa;
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+.child{
+    padding: 1%;
+    padding-bottom: 0%;
+    width: 30%;
+    max-height: 220px;
+    min-height: 220px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 1px 1px 41px lightblue;
+    margin-top: 3%;
+    margin-left: 3%;
+}
+.headin{
+    min-height: 18px;
+    max-height:18px;
+    padding-bottom: 0%;
+}
+.desc{
+    min-height: 140px;
+    overflow-y: scroll;
+    max-height: 140px;
+}
+/* For WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+    border-radius: 5px; /* Radius of the scrollbar handle */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
+  }
+  
+  .modechile{
+    background-color: #212529;
+    color: white;
+    padding: 1%;
+    padding-bottom: 0%;
+    width: 30%;
+    max-height: 220px;
+    min-height: 220px;
+    border-radius: 20px;
+    margin-top: 3%;
+    margin-left: 3%
+  }
+  @media screen and  (max-width: 600px) and (min-width: 400px)  {
+    .parent{
+      flex-direction: column;
+    }
+    .child{
+      margin-left: 5%;
+      width: 90%;
+    }
+  }

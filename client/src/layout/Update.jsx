@@ -18,7 +18,7 @@ export default function () {
 
         const handlesubmit = async (e) => {
             try {
-            const res = await fetch('http://localhost:4000/update', {
+            const res = await fetch('https://crud-practice-4.onrender.com/update', {
                 method: 'put',
                 headers: {
                     'Content-Type': 'application/json'
